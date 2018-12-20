@@ -54,7 +54,12 @@ public class PersonDBService extends Service {
         // Reserved for AIDL
         @Override
         public String aidl_getPersons() throws RemoteException {
-            return "  ";
+            List<Person> people = getDAO().getAll();
+            String s = "";
+            for (Person person : people) {
+                s+= person.toString()+";";
+            }
+            return s;
         }
     }
 
